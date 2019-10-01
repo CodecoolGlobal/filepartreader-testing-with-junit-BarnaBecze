@@ -22,4 +22,21 @@ class FilePartReaderTest {
         assertThrows(IOException.class, fpr::read);
         assertThrows(IOException.class, fpr::readLines);
     }
+
+    @Test
+    public void testIsStringRead() throws IOException {
+        FilePartReader fpr = new FilePartReader();
+        fpr.setup("/home/bbarna/OOPJava/filepartreader-testing-with-junit-BarnaBecze/docs/simpleText.txt", 1, 1);
+        assertEquals("This is a simple test.", fpr.read());
+
+    }
+
+    @Test
+    public void testIsCorrectLinesRead() throws IOException {
+        FilePartReader fpr = new FilePartReader();
+        fpr.setup("/home/bbarna/OOPJava/filepartreader-testing-with-junit-BarnaBecze/docs/palindromes.txt", 1, 2);
+        String expected = "Red rum, sir, is murder\n" +
+                "No lemon, no melon";
+        assertEquals(expected, fpr.readLines());
+    }
 }
