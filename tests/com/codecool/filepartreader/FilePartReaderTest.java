@@ -34,7 +34,7 @@ class FilePartReaderTest {
     @Test
     public void testIsCorrectLinesRead() throws IOException {
         FilePartReader fpr = new FilePartReader();
-        fpr.setup("/home/bbarna/OOPJava/filepartreader-testing-with-junit-BarnaBecze/docs/palindromes.txt", 1, 2);
+        fpr.setup("/home/bbarna/OOPJava/filepartreader-testing-with-junit-BarnaBecze/docs/palindromes.txt", 2, 3);
         String expected = "Red rum, sir, is murder\n" +
                 "No lemon, no melon";
         assertEquals(expected, fpr.readLines());
