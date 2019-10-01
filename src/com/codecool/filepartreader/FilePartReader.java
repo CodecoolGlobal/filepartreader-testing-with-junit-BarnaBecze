@@ -38,7 +38,7 @@ public class FilePartReader {
         if (toLine == 1 && fromLine == 1) return sb.append(lines[0]).toString();
 
         for (int i = fromLine; i <= toLine; i++) {
-            sb.append(lines[i]);
+            sb.append(lines[i - 1]);
             if (i < toLine) {
                 sb.append("\n");
             }
