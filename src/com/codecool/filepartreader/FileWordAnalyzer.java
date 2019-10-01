@@ -13,16 +13,10 @@ public class FileWordAnalyzer {
         this.fpr = fpr;
     }
 
-    private String[] splitLines() throws IOException {
-        String lines = this.fpr.readLines();
-
-        return lines.split("\\s");
-    }
-
     public List getWordsOrderedAlphabetically (String[] words) throws IOException {
         List<String> orderedWords = new ArrayList<>(Arrays.asList(words));
 
-        Collections.sort(orderedWords);
+        orderedWords.sort(String.CASE_INSENSITIVE_ORDER);
 
         return orderedWords;
     }
