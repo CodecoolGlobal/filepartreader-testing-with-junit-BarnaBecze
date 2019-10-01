@@ -11,6 +11,9 @@ public class FilePartReader {
         if (toLine < fromLine || fromLine < 1) {
             throw new IllegalArgumentException("Wrong arguments");
         }
+        this.filePath = filePath;
+        this.fromLine = fromLine;
+        this.toLine = toLine;
     }
 
     public String read() throws IOException {
@@ -18,8 +21,8 @@ public class FilePartReader {
         StringBuilder sb = new StringBuilder();
 
         int i;
-        while ((i = fis.read()) != 0) {
-            sb.append(i);
+        while ((i = fis.read()) != -1) {
+            sb.append((char)i);
         }
         fis.close();
 
@@ -32,9 +35,13 @@ public class FilePartReader {
         String[] lines = whole.split(System.getProperty("line.separator"));
 
         StringBuilder sb = new StringBuilder();
+        if (toLine == 1 && fromLine == 1) return sb.append(lines[0]).toString();
 
         for (int i = fromLine; i <= toLine; i++) {
             sb.append(lines[i]);
+            if (i < toLine) {
+                sb.append("\n");
+            }
         }
 
         return sb.toString();
