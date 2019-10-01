@@ -24,7 +24,22 @@ class FileWordAnalyzerTest {
             add("This");
         }};
         String words = fwa.fpr.readLines();
-        System.out.println(words);
         assertEquals(expected, fwa.getWordsOrderedAlphabetically(words.split("\\W")));
+    }
+
+    @Test
+    public void TestIsSubstringContainedInString() throws IOException {
+        FilePartReader fpr = new FilePartReader();
+        fpr.setup("docs/palindromes.txt", 1, 4);
+        FileWordAnalyzer fwa = new FileWordAnalyzer(fpr);
+
+        List<String> expected = new ArrayList<String>() {{
+            add("notable");
+            add("no");
+        }};
+
+        String words = fwa.fpr.readLines();
+        assertEquals(expected, fwa.getWordsContainingSubstring("no", words.split("\\W")));
+
     }
 }
