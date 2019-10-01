@@ -13,24 +13,20 @@ public class FilePartReader {
         }
     }
 
-    public String read() {
-        try {
-            FileInputStream fis = new FileInputStream(this.filePath);
-            StringBuilder sb = new StringBuilder();
+    public String read() throws IOException {
+        FileInputStream fis = new FileInputStream(this.filePath);
+        StringBuilder sb = new StringBuilder();
 
-            int i;
-            while ((i = fis.read())!= 0) {
-                sb.append(i);
-            }
-            fis.close();
-
-            return sb.toString();
-        } catch (IOException e) {
-            return "Error: " + e;
+        int i;
+        while ((i = fis.read()) != 0) {
+            sb.append(i);
         }
+        fis.close();
+
+        return sb.toString();
     }
 
-    public String readLines() {
+    public String readLines() throws IOException{
         String whole = this.read();
 
         String[] lines = whole.split(System.getProperty("line.separator"));
