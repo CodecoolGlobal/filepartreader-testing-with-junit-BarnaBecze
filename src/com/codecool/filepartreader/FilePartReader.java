@@ -3,9 +3,9 @@ package com.codecool.filepartreader;
 import java.io.*;
 
 public class FilePartReader {
-    private String filePath = "invalid";
-    private Integer fromLine = -1;
-    private Integer toLine = -2;
+    String filePath = "invalid";
+    Integer fromLine = -1;
+    Integer toLine = -2;
 
     public void setup(String filePath, Integer fromLine, Integer toLine) {
         if (toLine < fromLine || fromLine < 1) {
